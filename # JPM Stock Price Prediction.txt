@@ -1,0 +1,43 @@
+# JPM Stock Price Prediction
+
+My machine learning project that tries to predict if JPMorgan Chase stock will go up or down tomorrow using Python.
+
+## What it does
+
+This code downloads JPM stock data and uses a Random Forest model to predict if the stock price will be higher tomorrow. It's basically a "yes/no" prediction system.
+
+## How I built it
+
+1. **Got the data**: Used `yfinance` to download historical stock prices
+2. **Made the target**: Created a simple 1/0 label (1 = price goes up, 0 = price goes down)
+3. **Started simple**: First tried basic features like Open, High, Low, Close, Volume
+4. **Made it better**: Added rolling averages and trend features over different time periods
+5. **Fixed the testing**: Used backtesting so the model doesn't "cheat" by seeing future data
+6. **Improved predictions**: Only predicts "buy" when the model is really confident (60%+ probability)
+
+## Key features I added
+
+- Price ratios compared to moving averages (2, 5, 60, 250, 1000 days)
+- Trend indicators to see if stock has been going up/down recently
+- Probability threshold filtering to reduce bad predictions
+
+## What you need to run it
+
+```bash
+pip install yfinance pandas scikit-learn matplotlib
+```
+
+## Results
+
+The final model does better than just guessing randomly, but it's pretty conservative - it only makes predictions when it's confident. The precision score shows how accurate the "buy" signals are.
+
+## What I learned
+
+- Stock prediction is really hard!
+- Feature engineering makes a big difference
+- Being conservative with predictions is better than trying to predict everything
+- Backtesting is super important to avoid overfitting
+
+## Disclaimer
+
+This is just a class project - don't actually use this to trade real money! I'm still learning and this definitely isn't investment advice.
